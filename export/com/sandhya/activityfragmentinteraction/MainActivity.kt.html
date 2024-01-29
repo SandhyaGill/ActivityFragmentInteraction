@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #2aacb8;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">sandhya</span><span class="s2">.</span><span class="s1">activityfragmentinteraction</span>
+
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">appcompat</span><span class="s2">.</span><span class="s1">app</span><span class="s2">.</span><span class="s1">AppCompatActivity</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">Button</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">EditText</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">widget</span><span class="s2">.</span><span class="s1">TextView</span>
+
+<span class="s0">class </span><span class="s1">MainActivity : AppCompatActivity</span><span class="s2">() {</span>
+
+    <span class="s0">var </span><span class="s1">count </span><span class="s2">= </span><span class="s3">0</span>
+    <span class="s1">lateinit </span><span class="s0">var </span><span class="s1">tvCount : TextView</span>
+    <span class="s1">lateinit </span><span class="s0">var </span><span class="s1">activityInterface: ActivityInterface</span>
+    <span class="s0">var </span><span class="s1">etName : EditText?</span><span class="s2">= </span><span class="s0">null</span>
+    <span class="s0">var </span><span class="s1">btnChangeFragment : Button? </span><span class="s2">= </span><span class="s0">null</span>
+    <span class="s0">var </span><span class="s1">btnRed : Button? </span><span class="s2">= </span><span class="s0">null</span>
+    <span class="s0">var </span><span class="s1">btnBlue : Button? </span><span class="s2">= </span><span class="s0">null</span>
+    <span class="s0">var </span><span class="s1">btnGreen : Button? </span><span class="s2">= </span><span class="s0">null</span>
+
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState: Bundle?</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">)</span>
+        <span class="s1">setContentView</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.</span><span class="s1">activity_main</span><span class="s2">)</span>
+        <span class="s1">tvCount </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">tvCount</span><span class="s2">)</span>
+        <span class="s1">etName </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">etName</span><span class="s2">)</span>
+        <span class="s1">btnChangeFragment </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">btnChangeFragment</span><span class="s2">)</span>
+        <span class="s1">btnRed </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">btnRed</span><span class="s2">)</span>
+        <span class="s1">btnBlue </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">btnblue</span><span class="s2">)</span>
+        <span class="s1">btnGreen </span><span class="s2">= </span><span class="s1">findViewById</span><span class="s2">(</span><span class="s1">R</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">btnGreen</span><span class="s2">)</span>
+
+        <span class="s1">btnChangeFragment?</span><span class="s2">.</span><span class="s1">setOnClickListener </span><span class="s2">{</span>
+            <span class="s0">if </span><span class="s2">(</span><span class="s1">etName?</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">().</span><span class="s1">trim</span><span class="s2">().</span><span class="s1">isNullOrEmpty</span><span class="s2">()){</span>
+                <span class="s1">etName?</span><span class="s2">.</span><span class="s1">error </span><span class="s2">= </span><span class="s4">&quot;Enter something&quot;</span>
+            <span class="s2">}</span><span class="s0">else</span><span class="s2">{</span>
+                <span class="s1">activityInterface</span><span class="s2">.</span><span class="s1">getValue</span><span class="s2">(</span><span class="s1">etName?</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">())</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+        <span class="s1">btnRed?</span><span class="s2">.</span><span class="s1">setOnClickListener </span><span class="s2">{</span>
+            <span class="s1">activityInterface</span><span class="s2">.</span><span class="s1">getColorRed</span><span class="s2">(</span><span class="s1">value </span><span class="s2">= </span><span class="s1">toString</span><span class="s2">())</span>
+        <span class="s2">}</span>
+        <span class="s1">btnBlue?</span><span class="s2">.</span><span class="s1">setOnClickListener </span><span class="s2">{</span>
+            <span class="s1">activityInterface</span><span class="s2">.</span><span class="s1">getColorBlue</span><span class="s2">(</span><span class="s1">value </span><span class="s2">= </span><span class="s1">toString</span><span class="s2">())</span>
+        <span class="s2">}</span>
+        <span class="s1">btnGreen?</span><span class="s2">.</span><span class="s1">setOnClickListener </span><span class="s2">{</span>
+            <span class="s1">activityInterface</span><span class="s2">.</span><span class="s1">getColorGreen</span><span class="s2">(</span><span class="s1">value </span><span class="s2">= </span><span class="s1">toString</span><span class="s2">())</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">fun </span><span class="s1">incrementNumber</span><span class="s2">(){</span>
+        <span class="s1">count </span><span class="s2">= </span><span class="s1">count </span><span class="s2">+ </span><span class="s3">1</span>
+        <span class="s1">tvCount</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s1">count</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">())</span>
+    <span class="s2">}</span>
+
+    <span class="s0">fun </span><span class="s1">decrementNumber</span><span class="s2">(){</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">count </span><span class="s2">&gt;= </span><span class="s3">1</span><span class="s2">) {</span>
+            <span class="s1">count </span><span class="s2">= </span><span class="s1">count </span><span class="s2">- </span><span class="s3">1</span>
+            <span class="s1">tvCount</span><span class="s2">.</span><span class="s1">setText</span><span class="s2">(</span><span class="s1">count</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">())</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
